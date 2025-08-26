@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BBS Terminal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>💾 Welcome to the BBS</h1>
+
+  <div id="posts">
+    {% for username, message, timestamp in posts %}
+      <div class="post">
+        <span class="username">{{ username }}</span> @ 
+        <span class="timestamp">{{ timestamp }}</span><br>
+        <span class="message">{{ message }}</span>
+      </div>
+    {% endfor %}
+  </div>
+
+  <h2>New Post</h2>
+  <form method="POST">
+    <input type="text" name="username" placeholder="Your name">
+    <textarea name="message" placeholder="Type your message..."></textarea>
+    <button type="submit">Post</button>
+  </form>
+</body>
+</html>
